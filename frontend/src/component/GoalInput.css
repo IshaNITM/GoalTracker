@@ -1,32 +1,36 @@
-/* GoalInput Styling */
+/* GoalInput.css - Standalone Styling */
 .goal-input-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 20px; /* Space below the input */
-  }
-  
-  .goal-input {
-    width: 100%; /* Full width */
-    max-width: 500px; /* Limit width */
-    padding: 10px; /* Add padding */
-    font-size: 1rem; /* Medium font size */
-    border: 1px solid #ccc; /* Light border */
-    border-radius: 5px; /* Rounded corners */
-    margin-bottom: 10px; /* Space below the input */
-  }
-  
-  .submit-button {
-    background-color: #4CAF50; /* Green background */
-    color: white; /* White text */
-    border: none; /* Remove border */
-    padding: 10px 20px; /* Add padding */
-    font-size: 1rem; /* Medium font size */
-    border-radius: 5px; /* Rounded corners */
-    cursor: pointer; /* Pointer cursor on hover */
-    transition: background-color 0.3s ease; /* Smooth hover effect */
-  }
-  
-  .submit-button:hover {
-    background-color: #45a049; /* Darker green on hover */
-  }
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  margin: 0 auto 1.5rem;
+}
+
+.goal-input {
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  transition: border-color 0.2s ease;
+}
+
+.goal-input:focus {
+  outline: none;
+  border-color: #4a6fa5;
+}
+
+.submit-button {
+  background-color: #4a6fa5;
+  color: white;
+  border: none;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.submit-button:hover {
+  background-color: #3a5a80;
+}

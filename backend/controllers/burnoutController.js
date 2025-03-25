@@ -1,20 +1,36 @@
-const express = require('express');
-const cors = require('cors');
-const milestoneRoutes = require('../routes/milestoneRoutes');
-const reminderRoutes = require('../routes/reminderRoutes');
-const accomplishmentRoutes = require('../routes/accomplishmentRoutes');
-const burnoutRoutes = require('../routes/burnoutRoutes');
+const axios = require('axios');
 
-const app = express();
+exports.generateBurnoutPrompts = async (req, res) => {
+  const { goal } = req.body;
 
-// Middleware
-app.use(cors());
-app.use(express.json());
+  if (!goal) {
+    return res.status(400).json({ error: 'Goal is required' });
+  }
 
-// Routes
-app.use('/api/milestones', milestoneRoutes);
-app.use('/api/reminders', reminderRoutes);
-app.use('/api/accomplishments', accomplishmentRoutes);
-app.use('/api/burnout-prompts', burnoutRoutes);
+  try {
+    const response = await axios.post(
+      'https://openrouter.ai/api/v1/chat/completions',
+      {
+        model: "openai/gpt-3.5-turbo",
+        messages: [
+          {
+            role: "user",
+            content: `Generate 3 burnout prevention tips for someone working towards: ${goal}`,
+          },
+        ],
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${process.env.OPENROUTER_API_KEY}`,
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
-module.exports = app;
+    const prompts = response.data.choices[0].message.content.split('\n').filter(Boolean);
+    res.status(200).json({ prompts });
+  } catch (error) {
+    console.error('Error generating burnout prompts:', error);
+    res.status(500).json({ error: 'Failed to generate burnout prompts' });
+  }
+};

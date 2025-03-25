@@ -1,18 +1,44 @@
+/* Milestones.css - Standalone Styling */
 .milestones {
-    background-color: #f9f9f9;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .milestones h3 {
-    font-size: 1.5rem;
-    color: #333;
-    margin-bottom: 10px;
-  }
-  
-  .milestones ul {
-    list-style-type: disc;
-    margin-left: 20px;
-    color: #555;
-  }
+  background-color: #ffffff;
+  padding: 1.25rem;
+  border-radius: 6px;
+  margin-bottom: 1.25rem;
+  border: 1px solid #e0e0e0;
+  border-left: 3px solid #68d391; /* subtle green accent */
+}
+
+.milestones h3 {
+  font-size: 1.5rem;
+  color: #2c3e50;
+  margin-bottom: 0.75rem;
+  font-weight: bold;
+  letter-spacing: 0.25px;
+}
+
+.milestones ul {
+  list-style-type: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.milestones li {
+  padding: 0.5rem 0;
+  color: #4a5568;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  border-bottom: 1px solid #e2f3e5; /* very light green divider */
+}
+
+.milestones li:last-child {
+  border-bottom: none;
+}
+
+.milestones li::before {
+  content: "•";
+  color: #68d391; /* matching accent color */
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+}

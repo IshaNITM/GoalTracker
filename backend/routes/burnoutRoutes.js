@@ -1,9 +1,8 @@
 const express = require('express');
-const burnoutController = require('../controllers/burnoutController');
+const { generateBurnoutPrompts } = require('../controllers/burnoutController');
 
 const router = express.Router();
 
-// POST /api/burnout-prompts
-router.post('/', burnoutController.generateBurnoutPrompts);
+router.post('/', generateBurnoutPrompts);
 
-module.exports = router; 
+module.exports = router;

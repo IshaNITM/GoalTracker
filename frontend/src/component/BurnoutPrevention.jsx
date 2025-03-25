@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-// import './BurnoutPrevention.css';
+import './BurnoutPrevention.css';
 
 const BurnoutPrevention = () => {
   const [prompts, setPrompts] = useState([]);
+  const [error, setError] = useState('');
 
   useEffect(() => {
     const fetchPrompts = async () => {
@@ -22,6 +23,7 @@ const BurnoutPrevention = () => {
         setPrompts(data.prompts);
       } catch (error) {
         console.error('Error fetching burnout prompts:', error);
+        setError('Failed to fetch burnout prompts. Please try again later.');
       }
     };
     fetchPrompts();
@@ -30,9 +32,10 @@ const BurnoutPrevention = () => {
   return (
     <div className="burnout-prevention">
       <h3>Burnout Prevention</h3>
-      <ul>
+      {error && <p className="error-message">{error}</p>}
+      <ul className="prompts-list">
         {prompts.map((prompt, index) => (
-          <li key={index}>{prompt}</li>
+          <li key={index} className="prompt-item">{prompt}</li>
         ))}
       </ul>
     </div>
